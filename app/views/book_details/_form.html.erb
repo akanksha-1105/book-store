@@ -1,0 +1,37 @@
+<%= form_with(model: book_detail) do |form| %>
+  <% if book_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book_detail.errors.count, "error") %> prohibited this book_detail from being saved:</h2>
+
+      <ul>
+        <% book_detail.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :supplier_id %>
+    <%= form.select :supplier_id, options_from_collection_for_select(supplier_id form.object.supplier_id), prompt: "-- Select supplier id --" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :auther_id%>
+    <%= form.text_field :auther_id, options_from_collection_for_select(auther_id form.object.auther_id), prompt: "-- Select auther" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year_published %>
+    <%= form.number_field :year_published %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
